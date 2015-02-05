@@ -1,11 +1,13 @@
 <div class="container">
-  <div id="top"><p>[hackernews jr.] <a href="/">home</a> |
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> | <a href="/create">create post</a> |
     <% if session[:login] == nil %>
     <a href="/login">login</a>
     <% else %>
     <%= session[:login] %> <a href="/logout">(logout)</a>
     <% end %>
   </p></div>
+    <div id="upvote"></div>
+    <div id="downvote"></div>
     <p><a href="<%= @post.link %>" target="_new"><%= @post.title %></a></p>
     <p id="smallbot"><%= @post.point %> points by <%= @post.user.name %>
     <%= @timenow1.hour - @post.created_at.hour %> hours ago | <a href="/post?id=<%= @post.id %>">
@@ -28,10 +30,19 @@
   <% end %>
     <br />
   <% @post.comments.each do |x| %>
-  <p id="smallcomment"><%= x.user.name %> <%= @timenow1.hour - x.created_at.hour %> hours ago </p>
+  <div id="upvote"></div>
+  <div id="downvote"></div>
+  <p id="smallcomment">
+    <% if x.commentvotes.count == 1 or 0 %>
+    <%= x.commentvotes.count %> point
+    <% else %>
+    <%= x.commentvotes.count %> points
+    <% end %>
+    | <%= x.user.name %> | <%= @timenow1.hour - x.created_at.hour %> hours ago </p>
   <p id="comment" ><%= x.title%></p>
 
   <% end %>
 
 
 </div>
+

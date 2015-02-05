@@ -5,10 +5,6 @@ get '/' do
   # Look in app/views/index.erb
   @posts = Post.all
   @timenow = Time.now
-
-
-
-
   erb :index
 end
 
@@ -53,4 +49,25 @@ end
 get '/logout' do
 session[:login] = nil
 redirect '/'
+end
+
+get '/create' do
+  erb :create
+end
+
+post '/create' do
+  user = User.where(name: session[:login]).first
+  post = Post.create(title: params[:title], link: params[:link])
+  user.posts << post
+  redirect to('/')
+end
+
+post '/upvotepost' do
+  postvote1 = Postvote.create(like:1)
+  post1 = Post.find(params[:upvotepost])
+  user1 = User.where(name: session[:login]).first
+  post1.postvotes << postvote1
+  user1.postvotes << postvote1
+
+  "ok".to_json
 end

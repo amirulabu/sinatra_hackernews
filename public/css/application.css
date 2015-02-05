@@ -20,9 +20,61 @@ padding: 0px 3px;
 #smallcomment {
   font-size: x-small;
   margin-bottom:0px;
+  clear:both;
 }
 
 #comment {
   margin-top: 0px;
 }
 
+#upvote {
+  background-image: url(http://i.imgur.com/86lTVwm.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#downvote {
+  background-image: url(http://i.imgur.com/GMREmPb.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#upvotepost {
+  background-image: url(http://i.imgur.com/86lTVwm.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#downvotepost {
+  background-image: url(http://i.imgur.com/GMREmPb.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#upvotepost {
+  background-image: url(http://i.imgur.com/86lTVwm.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#downvotepost {
+  background-image: url(http://i.imgur.com/GMREmPb.png);
+  background-repeat: no-repeat;
+  display: inline;
+  float: left;
+  padding: 7px 20px 7px 7px;
+}
+
+#refresh-this-div {
+  display:inline;
+}

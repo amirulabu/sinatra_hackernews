@@ -1,5 +1,5 @@
 <div class="container">
-  <div id="top"><p>[hackernews jr.] <a href="/">home</a> |
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> | <a href="/create">create post</a> |
     <% if session[:login] == nil %>
     <a href="/login">login</a>
     <% else %>
@@ -7,10 +7,16 @@
     <% end %>
   </p></div>
 
-  <% @posts.each do |x| %>
+
   <ol>
-    <li><p><a href="<%= x.link %>" target="_new"><%= x.title %></a></p></l1>
-    <p id="smallbot"><%= x.point %> points by <%= x.user.name %>
+    <% @posts.each do |x| %>
+    <li>
+    <p><a href="<%= x.link %>" target="_new"><%= x.title %></a></p>
+    <div id="upvotepost" name="<%= x.id %>"></div>
+    <div id="downvotepost"></div>
+    <div id="refresh-this-div">
+    <p id="smallbot">
+    <%= x.postvotes.where(like:1).count %> points by <%= x.user.name %>
     <%= @timenow.hour - x.created_at.hour %> hours ago | <a href="/post?id=<%= x.id %>">
       <% if x.comments.count == 1 %>
       <%= x.comments.count %> comment
@@ -19,8 +25,8 @@
       <% end %>
    </a>
     </p>
+    </div>
+    </li>
+    <% end %>
   </ol>
-  <% end %>
-
-
 </div>

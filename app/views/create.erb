@@ -1,0 +1,20 @@
+<div class="container">
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> | <a href="/create">create post</a> |
+    <% if session[:login] == nil %>
+    <a href="/login">login</a>
+    <% else %>
+    <%= session[:login] %> <a href="/logout">(logout)</a>
+    <% end %>
+  </p></div>
+  <h1>Create new post</h1>
+  <% if session[:login] != nil %>
+    <form action="create" method="post">
+    Title: <input type="text" name="title">
+    <br><br>
+    Link: <input type="text" name="link">
+    <input type="submit" value="add post">
+  </form>
+  <% else %>
+  <p><a href='/login'>login</a> to post</p>
+  <% end %>
+</div>
