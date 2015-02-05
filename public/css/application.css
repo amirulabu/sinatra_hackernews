@@ -7,3 +7,22 @@
 th {
   text-align: left;
 }
+
+div #top {
+background-color: #ccc;
+padding: 0px 3px;
+}
+
+#smallbot {
+  font-size: x-small;
+}
+
+#smallcomment {
+  font-size: x-small;
+  margin-bottom:0px;
+}
+
+#comment {
+  margin-top: 0px;
+}
+

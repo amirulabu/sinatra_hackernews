@@ -1,9 +1,24 @@
 <div class="container">
-  <h1>Welcome to hackernews jr.!</h1>
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> |
+    <% if session[:login] == nil %>
+    <a href="/login">login</a>
+    <% else %>
+    <%= session[:login] %> <a href="/logout">(logout)</a>
+    <% end %>
+  </p></div>
+
   <% @posts.each do |x| %>
   <ol>
-    <li><p><a href="<%= x.link %>"><%= x.title %></a></p></l1>
-    <p></p>
+    <li><p><a href="<%= x.link %>" target="_new"><%= x.title %></a></p></l1>
+    <p id="smallbot"><%= x.point %> points by <%= x.user.name %>
+    <%= @timenow.hour - x.created_at.hour %> hours ago | <a href="/post?id=<%= x.id %>">
+      <% if x.comments.count == 1 %>
+      <%= x.comments.count %> comment
+      <% else %>
+      <%= x.comments.count %> comments
+      <% end %>
+   </a>
+    </p>
   </ol>
   <% end %>
 

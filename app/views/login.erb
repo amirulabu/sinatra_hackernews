@@ -1,0 +1,52 @@
+<div class="container">
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> |
+    <% if session[:login] == nil %>
+    <a href="/login">login</a>
+    <% else %>
+    <%= session[:login] %> <a href="/logout">(logout)</a>
+    <% end %>
+  </p></div>
+  <h1>login</h1>
+  <br>
+
+  <form action="login" method="post">
+    <input name="whence" type="hidden" value="news">
+
+    <table border="0">
+      <tr>
+        <td>username:</td>
+
+        <td><input name="acct" size="20" type="text"></td>
+      </tr>
+
+      <tr>
+        <td>password:</td>
+
+        <td><input name="pw" size="20" type="password"></td>
+      </tr>
+    </table><br>
+    <input type="submit" value="login">
+  </form>
+  <br>
+  <br>
+  <b>Create Account</b><br>
+  <br>
+
+  <form action="login" method="post">
+    <table border="0">
+      <tr>
+        <td>username:</td>
+
+        <td><input name="acct" size="20" type="text"></td>
+      </tr>
+
+      <tr>
+        <td>password:</td>
+
+        <td><input name="pw" size="20" type="password"></td>
+      </tr>
+    </table><br>
+    <input type="submit" value="create account">
+  </form>
+
+</div>

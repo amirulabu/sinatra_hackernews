@@ -1,0 +1,37 @@
+<div class="container">
+  <div id="top"><p>[hackernews jr.] <a href="/">home</a> |
+    <% if session[:login] == nil %>
+    <a href="/login">login</a>
+    <% else %>
+    <%= session[:login] %> <a href="/logout">(logout)</a>
+    <% end %>
+  </p></div>
+    <p><a href="<%= @post.link %>" target="_new"><%= @post.title %></a></p>
+    <p id="smallbot"><%= @post.point %> points by <%= @post.user.name %>
+    <%= @timenow1.hour - @post.created_at.hour %> hours ago | <a href="/post?id=<%= @post.id %>">
+      <% if @post.comments.count == 1 %>
+      <%= @post.comments.count %> comment
+      <% else %>
+      <%= @post.comments.count %> comments
+      <% end %>
+   </a>
+    </p>
+  <% if session[:login] != nil %>
+  <form action="comment" method="post">
+  <input type="hidden" name="post" value="<%= params[:id] %>">
+  <textarea name="text" rows="6" cols="65"></textarea>
+  <br /><br />
+  <input type="submit" value="add comment">
+  </form>
+  <% else %>
+  <p><a href='/login?id=<%=params[:id]%>'>login</a> to comment</p>
+  <% end %>
+    <br />
+  <% @post.comments.each do |x| %>
+  <p id="smallcomment"><%= x.user.name %> <%= @timenow1.hour - x.created_at.hour %> hours ago </p>
+  <p id="comment" ><%= x.title%></p>
+
+  <% end %>
+
+
+</div>
